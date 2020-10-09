@@ -22,24 +22,6 @@ use frontend\models\EntryForm;
  */
 class SiteController extends Controller
 {
-    public function actionFormEntry()
-    {
-        $model = new EntryForm();
-
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            // valid data received in $model
-
-            // do something meaningful here about $model ...
-
-            return $this->render('entry-confirm', ['model' => $model]);
-        } else {
-            // either the page is initially displayed or there is some validation error
-            return $this->render('entry', ['model' => $model]);
-        }
-    }
-    /**
-     * {@inheritdoc}
-     */
     public function behaviors()
     {
         return [
@@ -129,28 +111,6 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending your message.');
-            }
-
-            return $this->refresh();
-        } else {
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }
 
     /**
      * Displays about page.
@@ -273,6 +233,28 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+    }
+
+    public function actionEntry()
+    {
+        $model = new EntryForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->saveScovealca()) {
+            // valid data received in $model
+
+            // do something meaningful here about $model ...
+
+            return $this->render('entry-confirm', ['model' => $model]);
+        } else {
+            // either the page is initially displayed or there is some validation error
+            return $this->render('entry', ['model' => $model]);
+        }
+    }
+    public function actionBuy()
+    {
+        $model = new EntryForm();
+        
+        return $this->render('buy', ['entryForm' => $model]);
     }
     
 }

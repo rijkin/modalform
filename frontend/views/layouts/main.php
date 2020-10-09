@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -39,7 +40,8 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Despre Scoveltinator', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Cumpara', 'url' => ['/site/buy']],
+        ['label' => 'Cumpara', 'url' => ['/site/buy']]
+        
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
