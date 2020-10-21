@@ -13,9 +13,7 @@ class m201021_160022_create_scovealca_table extends Migration
     public function safeUp()
     {
         $this->createTable('{{%scovealca}}', [
-            'name' => $this->string(),
-            'email' => $this->string(),
-            'phone' => $this->int(),
+            'id' => $this->primaryKey(),
         ]);
     }
 
