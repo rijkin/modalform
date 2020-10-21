@@ -14,6 +14,9 @@ class m201021_160022_create_scovealca_table extends Migration
     {
         $this->createTable('{{%scovealca}}', [
             'id' => $this->primaryKey(),
+            'name' => $this->string(50),
+            'email' => $this->string(50),
+            'phone' => $this->int(20),
         ]);
     }
 
