@@ -12,7 +12,6 @@ class m201015_165527_migrate_motzy extends Migration
      */
     public function safeUp()
     {
-
     }
 
     /**
@@ -25,11 +24,16 @@ class m201015_165527_migrate_motzy extends Migration
         return false;
     }
 
-    /*
+
     // Use up()/down() to run migration code without a transaction.
     public function up()
     {
-
+        //create table
+        Yii::$app->db->createCommand()->createTable('scovealca', [
+            'name' => 'string',
+            'email' => 'string',
+            'phone' => 'int',
+        ]);
     }
 
     public function down()
@@ -38,5 +42,5 @@ class m201015_165527_migrate_motzy extends Migration
 
         return false;
     }
-    */
+
 }
