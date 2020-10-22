@@ -12,12 +12,18 @@ class m201021_160022_create_scovealca_table extends Migration
      */
     public function safeUp()
     {
-        $this->createTable('{{%scovealca}}', [
-            'id' => $this->primaryKey(),
+       $this->createTable('scovealca', [
+           'id' => $this->primaryKey(),
             'name' => $this->string(50)->notNull()->unique(),
-            'email' => $this->string(50)->notNull(),
+           'email' => $this->string(50)->notNull(),
             'phone' => $this->integer(20)->notNull(),
         ]);
+//        $this->execute("ALTER TABLE scovealca DROP COLUMN phone");
+//        $this->dropColumn('scovealca','phone');
+//        $this->execute("ALTER TABLE scovealca ADD COLUMN  phone varchar(255)");
+//        $this->addColumn('scovealca','phone',$this->string(255));
+
+
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 
-use app\models\Scovealca;
+use frontend\models\Scovealca;
 use Yii;
 use yii\base\Model;
 
@@ -17,7 +17,7 @@ class EntryForm extends Model
         return [
             [['name', 'email'], 'required'],
             ['email', 'email'],
-            [['phone', 'phone'], 'required'],
+            [['phone'], 'number', 'numberPattern' => '/^[0-9]*$/'],
         ];
     }
 
@@ -28,14 +28,14 @@ class EntryForm extends Model
             return null;
         }
 
-        $Scovealca = new Scovealca();
-        $Scovealca->name = $this->name;
-        $Scovealca->email = $this->email;
-        $Scovealca->phone = $this->phone;
-        if ($Scovealca->save()) {
+        $scovealca = new Scovealca();
+        $scovealca->name = $this->name;
+        $scovealca->email = $this->email;
+        $scovealca->phone = $this->phone;
+        if ($scovealca->save()) {
             return true;
         } else {
-            Yii::error($Scovealca->errors);
+            Yii::error($scovealca->errors);
             return false;
         }
 

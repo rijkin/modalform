@@ -1,6 +1,6 @@
 <?php
 
-namespace app\models;
+namespace frontend\models;
 
 use Yii;
 
@@ -11,38 +11,7 @@ use Yii;
  * @property string $email
  * @property int $phone
  */
-class Scovealca extends \yii\db\ActiveRecord
+class Scovealca extends \common\models\Scovealca
 {
-    /**
-     * {@inheritdoc}
-     */
-    public static function tableName()
-    {
-        return 'scovealca';
-    }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function rules()
-    {
-        return [
-            [['name', 'email'], 'required'],
-            [['phone'], 'integer'],
-            [['name', 'email'], 'string', 'max' => 52],
-            [['name'], 'unique'],
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function attributeLabels()
-    {
-        return [
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
-        ];
-    }
 }
