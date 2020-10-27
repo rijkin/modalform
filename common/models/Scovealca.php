@@ -7,7 +7,6 @@ use Yii;
 /**
  * This is the model class for table "scovealca".
  *
- * @property int $id
  * @property string $name
  * @property string $email
  * @property string $phone
@@ -42,7 +41,7 @@ class Scovealca extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
+ //           'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
             'email' => Yii::t('app', 'Email'),
             'phone' => Yii::t('app', 'Phone'),

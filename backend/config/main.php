@@ -39,7 +39,7 @@ return [
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+           // 'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules'=>[
                 '<module:[a-z-]+>/<controller:[a-z-]+>/<action:[a-z-]+>/<id:\d+>' => '<module>/<controller>/<action>',

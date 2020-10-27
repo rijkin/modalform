@@ -17,7 +17,7 @@ class ScovealcaSearch extends Scovealca
     public function rules()
     {
         return [
-            [['id'], 'integer'],
+       //     [['id'], 'integer'],
             [['name', 'email', 'phone'], 'safe'],
         ];
     }

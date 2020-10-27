@@ -1,4 +1,5 @@
-# use mod_rewrite for pretty URL support
+
+
     RewriteEngine on
 
     # if $showScriptName is false in UrlManager, do not allow accessing URLs with script name

@@ -18,21 +18,36 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a(Yii::t('app', 'Create Scovealca'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);
+    $d = '12';
+     ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'name',
-            'email:email',
+            [
+                'attribute' => 'name',
+                'label' => 'Name',
+                'value' => function ($data){
+                    return Html::a($data->name,['scovealca/view','id'=>$data->id]);
+                },
+                'format'=>'raw'
+            ],
+            [
+                'attribute' => 'email',
+                'label' => 'eMail',
+                'value' => function ($data){
+                    return Html::a($data->email,['scovealca/update','id'=>$data->id]);
+                },
+                'format'=>'raw'
+            ],
             'phone',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
+
     ]); ?>
 
 
