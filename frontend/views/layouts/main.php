@@ -39,8 +39,9 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Despre Scoveltinator', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
-        ['label' => 'Cumpara', 'url' => ['/site/buy']]
+        ['label' => 'Tabela Produse', 'url' => ['/site/products/index']],
+        ['label' => 'Cumpara', 'url' => ['/site/buy']],
+        ['label' => 'Produse', 'url' => ['/products/index']]
         
     ];
     if (Yii::$app->user->isGuest) {
