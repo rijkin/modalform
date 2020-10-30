@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'name',
                 'label' => 'Name',
                 'value' => function ($data){
-                    return Html::a($data->name,['scovealca/view','id'=>$data->id]   );
+                    return Html::a($data->name,['scovealca/view','id'=>$data->id]);
                 },
                 'format'=>'raw'
             ],
