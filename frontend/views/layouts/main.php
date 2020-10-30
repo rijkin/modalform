@@ -39,7 +39,7 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Despre Scoveltinator', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Produse', 'url' => ['/product/index']],
         ['label' => 'Cumpara', 'url' => ['/site/buy']]
         
     ];
