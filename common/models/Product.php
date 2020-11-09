@@ -7,9 +7,11 @@ use Yii;
 /**
  * This is the model class for table "product".
  *
+ * @property integer $id
  * @property string $name
  * @property int $price
  * @property string $description
+ * @property Review[] $reviews
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -31,7 +33,6 @@ class Product extends \yii\db\ActiveRecord
             [['price'], 'integer'],
             [['name'], 'string', 'max' => 50],
             [['description'], 'string', 'max' => 300],
-            [['name'], 'unique'],
         ];
     }
 
@@ -46,4 +47,13 @@ class Product extends \yii\db\ActiveRecord
             'description' => Yii::t('app', 'Description'),
         ];
     }
+
+    /**
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getReviews(){
+        return $this->hasMany(Review::class,['product_id'=>'id']);
+    }
+
 }

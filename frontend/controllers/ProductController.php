@@ -2,9 +2,11 @@
 
 namespace frontend\controllers;
 
+use common\models\Review;
 use Yii;
 use common\models\Product;
 use frontend\models\ProductSearch;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -42,8 +44,26 @@ class ProductController extends Controller
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
-    }
 
+
+    }
+    /**
+     * Creates a new Product model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     * @return mixed
+     */
+    public function actionCreateReview()
+    {
+        $review = new Review();
+
+        if ($review->load(Yii::$app->request->post()) && $review->save()) {
+            return $this->redirect(['view', 'id' => $review->product_id]);
+        }
+
+        return $this->render('create', [
+            'model' => $review,
+        ]);
+    }
     /**
      * Displays a single Product model.
      * @param string $id
@@ -52,15 +72,28 @@ class ProductController extends Controller
      */
     public function actionView($id)
     {
+        $model = $this->findModel($id);
+        $review = new Review();
+//        $reviews = $model->reviews;
+//        $reviews = Review::find()->andWhere(['product_id'=>$model->id])->all();
+        $reviewsDataProvider = new ActiveDataProvider([
+            'query' => $model->getReviews(),
+            'pagination' => false,
+                //for pagination uncomment this, requested issue via git to set 'pagination' => false,[
+                //'pageSize' => 1,
+            //],
+        ]);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
+            'review'=>$review,
+            'reviewsDataProvider'=>$reviewsDataProvider,
         ]);
     }
 
     /**
      * Creates a new Product model.
      * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
+     * @return Product
      */
 
     protected function findModel($id)
