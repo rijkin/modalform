@@ -59,4 +59,4 @@ Create a Review!
     </div>
     <?php ActiveForm::end(); ?>
 
-</div><!-- reviews -->
+</div>
