@@ -56,7 +56,11 @@ class ProductController extends Controller
     {
         $review = new Review();
 
-        if ($review->load(Yii::$app->request->post()) && $review->save()) {
+        if ($review->load(Yii::$app->request->post())) {
+
+            if(!$review->save()){
+                Yii::debug($review->getErrors());
+            }
             return $this->redirect(['view', 'id' => $review->product_id]);
         }
 

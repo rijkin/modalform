@@ -3,6 +3,9 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+
 
 /**
  * This is the model class for table "review".
@@ -24,6 +27,19 @@ class Review extends \yii\db\ActiveRecord
         return 'review';
     }
 
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],
+                ],
+                'value' => date('Y-m-d H:i:s'),
+            ],
+        ];
+
+    }
     /**
      * {@inheritdoc}
      */
@@ -31,7 +47,7 @@ class Review extends \yii\db\ActiveRecord
     {
         return [
 
-            [['name', 'created_at', 'text_body', 'product_id'], 'required'],
+            [['name', 'text_body', 'product_id'], 'required'],
             [['product_id'], 'integer'],
             [['created_at'], 'safe'],
             [['text_body'], 'string'],
@@ -62,4 +78,7 @@ class Review extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
+
+
+
 }

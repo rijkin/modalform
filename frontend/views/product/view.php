@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 /* @var \yii\data\ActiveDataProvider $reviewsDataProvider */
 /* @var $form ActiveForm */
 
+
+
 $this->title = $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Products'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -50,9 +52,10 @@ Create a Review!
     <?php $form = ActiveForm::begin(['action'=>'/product/create-review']); ?>
 
     <?= $form->field($review, 'name') ?>
-    <?= $form->field($review, 'created_at') ?>
+
     <?= $form->field($review, 'text_body') ?>
-    <?= $form->field($review, 'product_id') ?>
+    <?= $form->field($review,'product_id')->hiddeninput(['value' => $model->id]); ?>
+
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>

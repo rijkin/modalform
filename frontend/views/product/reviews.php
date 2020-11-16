@@ -1,5 +1,6 @@
 <?php
 
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,10 +13,9 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'name') ?>
-        <?= $form->field($model, 'created_at') ?>
+
         <?= $form->field($model, 'text_body') ?>
-        <?= $form->field($model, 'product_id') ?>
-    
+
         <div class="form-group">
             <?= Html::submitButton(Yii::t('app', 'Submit'), ['class' => 'btn btn-primary']) ?>
         </div>

@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
         <?= $form->field($model, 'name') ?>
-        <?= $form->field($model, 'created_at') ?>
+
         <?= $form->field($model, 'text_body') ?>
         <?= $form->field($model, 'product_id') ?>
     
