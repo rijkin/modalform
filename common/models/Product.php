@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\components\cart\CartItemInterface;
 use Yii;
 
 /**
@@ -13,7 +14,7 @@ use Yii;
  * @property string $description
  * @property Review[] $reviews
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends \yii\db\ActiveRecord implements CartItemInterface
 {
     /**
      * {@inheritdoc}
@@ -56,4 +57,19 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasMany(Review::class,['product_id'=>'id']);
     }
 
+    /**
+     * @inheritDoc
+     */
+    public function getCartItemId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getCartItemPrice()
+    {
+        return $this->price;
+    }
 }

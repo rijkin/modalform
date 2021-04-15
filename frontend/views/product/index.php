@@ -2,11 +2,14 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\components\cart;
 
 
 /* @var $this yii\web\View */
 /* @var $searchModel ProductSearch\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $model common\models\Product */
+
 
 $this->title = Yii::t('app', 'Products');
 $this->params['breadcrumbs'][] = $this->title;
@@ -36,7 +39,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'price',
             'description',
+            Yii::$app->cart(['CartController/actionAddItem', 'id' => $model->id]),
 
+            [
+
+                'id'=>'grid-custom-button',
+
+                'data-pjax'=>true,
+
+                'action'=>Yii::$app->cart(['CartController/actionAddItem', 'id' => $model->id]),
+
+                'class'=>'button btn btn-default',
+
+            ]
 
         ],
     ]); ?>

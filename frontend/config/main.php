@@ -36,6 +36,11 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'cart' =>[
+            'class'=>\common\components\cart\CartComponent::class,
+            'cartItemClass'=>\common\models\Product::class,
+        ]
+
     ],
     'params' => $params,
 ];

@@ -40,7 +40,8 @@ AppAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Despre Scoveltinator', 'url' => ['/site/about']],
         ['label' => 'Produse', 'url' => ['/product/index']],
-        ['label' => 'Cumpara', 'url' => ['/site/buy']]
+        ['label' => 'Cumpara', 'url' => ['/site/buy']],
+        ['label' => 'Cart', 'url' => ['/common/components/cart/CartItemInterface']]
         
     ];
     if (Yii::$app->user->isGuest) {
